@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+</head>
+<body>
+    <section class="container">
+        <div class="header-section">
+            <h1 class="task-title">Today's To do </h1>
+            <i class="fa-solid fa-rotate"></i>
+        </div>
+
+        <div class="add-section">
+            <input type="text" class="add-task" placeholder="Add to your list...">
+            <button type="submit" class="add-button">
+                <i class="fa-solid fa-circle-down"></i>
+            </button>
+        </div>
+
+        <div class="task-section">
+            <ul id="task-container">
+                <!--Dynamically Generated-->
+            </ul>
+            <div class="button-container">
+                <button type="submit" class="button-clear">Clear all completed</button>
+            </div>
+        </div>
+
+    </section>
+    
+    <script src="https://kit.fontawesome.com/a7a68c4557.js" crossorigin="anonymous"></script>
+</body>
+</html>
