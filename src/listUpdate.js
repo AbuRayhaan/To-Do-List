@@ -1,0 +1,1 @@
+import { deleteTask, editTask } from './index.js';
