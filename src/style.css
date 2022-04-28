@@ -42,7 +42,8 @@ section .header-section {
 
 .fa-rotate,
 .fa-ellipsis-vertical,
-.fa-circle-down {
+.fa-circle-down,
+.fa-trash-can {
   margin-right: 20px;
   color: #8f8f8f;
   font-size: 20px;
@@ -69,7 +70,8 @@ section .add-section {
   font-style: italic;
 }
 
-.fa-ellipsis-vertical {
+.fa-ellipsis-vertical,
+.fa-trash-can {
   margin-right: 30px;
 }
 
@@ -86,16 +88,31 @@ section .task-section {
   background-color: #fff;
 }
 
-.task-item-container {
+.task-item-container,
+.task-item-container-2 {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #8f8f8f;
 }
 
+.task-content-1 {
+  display: flex;
+  flex-direction: row;
+}
+
+.hide {
+  display: none;
+}
+
 .task-item {
   margin-left: 20px;
   padding: 15px 0;
+}
+
+.line-through {
+  text-decoration: line-through;
 }
 
 .button-container {
@@ -108,3 +125,4 @@ section .task-section {
   font-size: 16px;
   background-color: transparent;
 }
+
