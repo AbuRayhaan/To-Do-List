@@ -1,5 +1,5 @@
 import './style.css';
-
+/*
 const toDoTask = [
   {
     index: 1,
@@ -22,8 +22,20 @@ const toDoTask = [
     completed: true,
   },
 ];
-
+*/
 const toDoList = document.querySelector('#task-container');
+const addTask = document.getElementById('#addTask');
+const addTaskInput = document.getElementById('#addTaskInput');
+let storedTasks = [];
+
+const getTask = () => {
+  if(localStorage.getItem('tasks') === null) {
+    storedTasks = [];
+  } else {
+    storedTasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+
+}
 
 const listDisplay = () => {
   let display = '';
