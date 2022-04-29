@@ -102,11 +102,17 @@ section .task-section {
   flex-direction: row;
 }
 
-.hide {
+.hide1 {
   display: none;
 }
 
+.hide2 {
+  display: flex;
+}
+
 .task-item {
+  display: flex;
+  justify-content: space-between;
   margin-left: 20px;
   padding: 15px 0;
 }

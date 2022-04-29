@@ -3,6 +3,7 @@ import './style.css';
 const toDoList = document.querySelector('#task-container');
 const addTask = document.getElementById('addTask');
 const addTaskInput = document.getElementById('addTaskInput');
+
 let storedTasks = [];
 let editTaskItem = null;
 
@@ -16,27 +17,22 @@ const getTask = () => {
   let display = '';
   storedTasks.forEach((task, index) => {
     const completed = task.completed ? 'line-through' : '';
-    display += `<li class="task-item-container ${completed}" id=${task}>
-    <div class = "task-item-container">
+
+    display += `<li class="${completed}" id=${index}>
+    <div class = "task-item-container" id="content-1">
     <div class="task-item">
-      <input type="checkbox" id="${task.index} ${task.completed ? 'checked' : ''}">
-      <label type="text" id="">${task.description}</label>
+    <input type="checkbox" id="${index} ${task.completed ? 'checked' : ''}">
+    <label type="text" id="">${task.description}</label>
+    </div>  
+    <div class="hide2">
+    <i class="fa-solid fa-ellipsis-vertical vertIcon" id="ellipse${index}"></i>
     </div>
-    <i class="fa-solid fa-ellipsis-vertical" id ="ellipse"></i>
+    <div class="hide1">
+    <i class="fa-solid fa-trash-can deleteBin" id="delete${index}"></i>
     </div>
     </li>
-
-    <div class = "task-item-container-2">
-    <div class="task-item">
-      <input type="checkbox" id="${task.index} ${task.completed ? 'checked' : ''}">
-      <label type="text" id="editTask">${task.description}</label>
-    </div>
-    <i class="fa-solid fa-trash-can" id ="delete"></i>
-    </div>
-      </li>
-      `;
+    `;
   });
-
   toDoList.innerHTML = display;
 };
 
@@ -80,7 +76,7 @@ const completedTask = (task) => {
 const resetList = (storedList) => storedList.forEach((taskItem, index) => {
   taskItem.index = index;
 });
-/*
+
 const deleteTask = (task) => {
   const delItem = storedTasks[task];
   storedTasks = storedTasks.filter((toDel) => toDel !== delItem);
@@ -115,6 +111,14 @@ document.addEventListener('keydown', (press) => {
     addTask.click();
   }
 });
+
+/*
+const deleteTaskItem = document.getElementById('deleteIcon');
+
+deleteTaskItem.addEventListener('click', () => {
+
+});
+
 /*
 const updateList = (update) => {
   const selectItem = update.target;
@@ -134,6 +138,15 @@ const updateList = (update) => {
     editTask(item);
   }
 };
-*/
 
 toDoList.addEventListener('click', updateList);
+*/
+const ellipse = document.querySelectorAll('.vertIcon');
+
+ellipse.forEach((a, i) => {
+  document.getElementById(`ellipse${i}`).addEventListener('click', () => {
+    document.getElementById(`delete${i}`).style.display = 'flex';
+    document.getElementById(`ellipse${i}`).style.display = 'none';
+    console.log('button', i);
+  });
+});
