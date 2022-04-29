@@ -7,23 +7,6 @@ const addTaskInput = document.getElementById('addTaskInput');
 let storedTasks = [];
 let editTaskItem = null;
 
-function showTrash() {
-  const ellipse = document.querySelectorAll('li');
-  ellipse.forEach((a, i) => {
-    a.addEventListener('mouseover', () => {
-      document.getElementById(`delete${i}`).style.display = 'flex';
-      document.getElementById(`ellipse${i}`).style.display = 'none';
-      a.style.backgroundColor = 'rgba(190, 180, 176, 0.61)';
-    });
-
-    a.addEventListener('mouseout', () => {
-      document.getElementById(`delete${i}`).style.display = 'none';
-      document.getElementById(`ellipse${i}`).style.display = 'flex';
-      a.style.backgroundColor = 'transparent';
-    });
-  });
-}
-
 const getTask = () => {
   if (localStorage.getItem('tasks') === null) {
     storedTasks = [];
@@ -31,31 +14,36 @@ const getTask = () => {
     storedTasks = JSON.parse(localStorage.getItem('tasks'));
   }
 
-  let display = '';
   storedTasks.forEach((task, index) => {
     const completed = task.completed ? 'line-through' : '';
+    const iconDiv = document.createElement('div');
+    iconDiv.innerHTML = '';
+    const deleteButton = document.createElement('div');
+    deleteButton.className = 'hide';
+    deleteButton.innerHTML = '<i class="fa-solid fa-trash-can"></i>';
 
-    display += `<li class="taskList${completed}" id=${index}>
-    <div class = "task-item-container">
+    const ellipse = document.createElement('div');
+    ellipse.innerHTML = '<i class="fa-solid fa-ellipsis-vertical"></i>';
+
+    ellipse.addEventListener('click', () => {
+      deleteButton.classList.remove('hide');
+      ellipse.classList.add('hide');
+    });
+
+    const display = `<li class="${completed}" id=${task}>
+    <div class = "task-item-container" id="content-1">
     <div class="task-item">
-    <input type="checkbox" id="${index}" ${task.completed ? 'checked' : ''} class="check">
-    <label type="text" id="pTask${index}">${task.description}</label>
-    </div>  
-    <div class="hide2" id="ellipse${index}">
-    <i class="fa-solid fa-ellipsis-vertical vertIcon"></i>
+      <input type="checkbox" id="${index} ${task.completed ? 'checked' : ''}">
+      <label type="text" id="">${task.description}</label>
     </div>
-    <div class="hide1" id="delete${index}">
-    <i class="fa-solid fa-trash-can deleteBin"></i>
     </div>
-    </li>
-    `;
+      </li>
+      `;
+    iconDiv.innerHTML = display;
+    iconDiv.querySelector('.task-item').append(ellipse, deleteButton);
+    toDoList.append(iconDiv);
   });
-  toDoList.innerHTML = display;
-
-  showTrash();
 };
-
-document.addEventListener('DOMContentLoaded', getTask);
 
 const saveTask = ({ index, description, completed = false }) => {
   storedTasks = [];
@@ -134,13 +122,6 @@ document.addEventListener('keydown', (press) => {
 });
 
 /*
-const deleteTaskItem = document.getElementById('deleteIcon');
-
-deleteTaskItem.addEventListener('click', () => {
-
-});
-
-/*
 const updateList = (update) => {
   const selectItem = update.target;
 
@@ -161,22 +142,4 @@ const updateList = (update) => {
 };
 
 toDoList.addEventListener('click', updateList);
-*/
-/*
-const ellipse = document.querySelectorAll('.vertIcon');
-
-ellipse.forEach((a, i) => {
-  document.getElementById(`ellipse${i}`).addEventListener('click', () => {
-    document.getElementById(`delete${i}`).style.display = 'flex';
-    document.getElementById(`ellipse${i}`).style.display = 'none';
-    console.log('button', i);
-  });
-});
-*/
-
-/*
-ellipse.addEventListener('click', () => {
-  deleteButton.classList.remove('hide');
-  ellipse.classList.add('hide');
-});
 */

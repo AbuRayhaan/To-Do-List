@@ -102,12 +102,17 @@ section .task-section {
   flex-direction: row;
 }
 
+.hide {
+  display: none;
+}
+
 .hide1 {
   display: none;
 }
 
 .hide2 {
   display: flex;
+
 }
 
 .task-item {
