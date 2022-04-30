@@ -66,15 +66,14 @@ const getTask = () => {
 };
 
 const saveTask = ({ index, description, completed = false }) => {
-  storedTasks = [];
-
+  let storedTasks = [];
   if (localStorage.getItem('tasks') === null) {
     storedTasks = [];
   } else {
     storedTasks = JSON.parse(localStorage.getItem('tasks'));
   }
-
   storedTasks.push({ index, description, completed });
+  storedTasks[storedTasks.length - 1].index = storedTasks.length;
   localStorage.setItem('tasks', JSON.stringify(storedTasks));
   getTask();
 };
@@ -148,7 +147,7 @@ const removeChecked = () => {
 function updateId() {
   const TasksR = JSON.parse(localStorage.getItem('tasks'));
   TasksR.forEach((a, i) => {
-    a.index = i;
+    a.index = i + 1;
     localStorage.setItem('tasks', JSON.stringify(TasksR));
   });
 }
@@ -158,7 +157,7 @@ function removeTask() {
   const Taskstored = JSON.parse(localStorage.getItem('tasks'));
   removeList.forEach((a, i) => {
     document.getElementById(`idBtn${i}`).addEventListener('click', () => {
-      const TaskFiltered = Taskstored.filter((task) => task.index !== i);
+      const TaskFiltered = Taskstored.filter((task) => task.index !== i + 1);
       localStorage.setItem('tasks', JSON.stringify(TaskFiltered));
       window.location.reload();
       updateId();
