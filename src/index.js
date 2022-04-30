@@ -50,7 +50,7 @@ const getTask = () => {
     <input type="checkbox" id="${index} ${task.completed ? 'checked' : ''}" class="check">
     <label type="text" class="Label" id="pTask${index}">${task.description}</label>
     <input type="text" class="UpdateLabel" id="updt${index}"/>
-    </div>  
+    </div>
     <div class="hide2" id="ellipse${index}">
     <i class="fa-solid fa-ellipsis-vertical" ></i>
     </div>
