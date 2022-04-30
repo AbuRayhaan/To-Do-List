@@ -1,5 +1,3 @@
-
-
 const SteerChecked = () => {
   const StoreCheck = JSON.parse(localStorage.getItem('tasks'));
   const checkBoxs = document.querySelectorAll('.check');
@@ -33,7 +31,7 @@ const removeChecked = () => {
     buttonRemove.addEventListener('click', () => {
       const BookFiltered = TasksR.filter((book) => book.completed !== true);
       localStorage.setItem('tasks', JSON.stringify(BookFiltered));
-      location.reload();
+      window.location.reload();
     });
   });
 };

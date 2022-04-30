@@ -86,6 +86,12 @@ document.addEventListener('keydown', (press) => {
   }
 });
 
+const reload = document.getElementById('reload');
+
+reload.addEventListener('click', () => {
+  removeTask();
+});
+
 getTask();
 updateId();
 removeTask();

@@ -5,9 +5,9 @@ export default function removeTask() {
   const TaskStored = JSON.parse(localStorage.getItem('tasks'));
   removeList.forEach((a, i) => {
     document.getElementById(`idBtn${i}`).addEventListener('click', () => {
-      const TaskFiltered = TaskStored.filter((book, index) => book.index !== i);
+      const TaskFiltered = TaskStored.filter((task, i) => task.index !== i);
       localStorage.setItem('tasks', JSON.stringify(TaskFiltered));
-      location.reload();
+      window.location.reload();
       updateId();
     });
   });
