@@ -93,7 +93,9 @@ addTask.addEventListener('click', (addItem) => {
     saveEditTask(editTaskItem);
     editTaskItem = null;
   } else {
-    saveTask({ index: storedTasks.length, description: addTaskInput.value, completed: false });
+    saveTask({
+      index: (storedTasks.length + 1), description: addTaskInput.value, completed: false
+    });
   }
   addTaskInput.value = '';
   window.location.reload();
@@ -111,7 +113,7 @@ const SteerChecked = () => {
   StoreCheck.forEach((a, i) => {
     if (a.completed === true) {
       checkBoxs[i].checked = true;
-      document.getElementById(`ptask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
+      document.getElementById(`pTask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
     }
   });
 };
@@ -130,7 +132,7 @@ const removeChecked = () => {
       } else {
         TasksR[i].completed = true;
         checkBoxs[i].checked = true;
-        document.getElementById(`ptask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
+        document.getElementById(`pTask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
         localStorage.setItem('tasks', JSON.stringify(TasksR));
       }
     });
