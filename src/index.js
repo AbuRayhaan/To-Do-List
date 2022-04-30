@@ -111,7 +111,7 @@ const SteerChecked = () => {
   StoreCheck.forEach((a, i) => {
     if (a.completed === true) {
       checkBoxs[i].checked = true;
-      document.getElementById(`ptask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
+      document.getElementById(`pTask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
     }
   });
 };
@@ -130,7 +130,7 @@ const removeChecked = () => {
       } else {
         TasksR[i].completed = true;
         checkBoxs[i].checked = true;
-        document.getElementById(`ptask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
+        document.getElementById(`pTask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
         localStorage.setItem('tasks', JSON.stringify(TasksR));
       }
     });
@@ -173,12 +173,9 @@ function UpdateLabel() {
     element.addEventListener('keypress', (event) => {
       if (event.key === 'Enter') {
         event.preventDefault();
-        ArrayStoredParse.forEach((a, i) => {
-          const listUpdate = document.getElementById(`updt${i}`);
-          ArrayStoredParse[i].description = listUpdate.value;
-          localStorage.setItem('tasks', JSON.stringify(ArrayStoredParse));
-          window.location.reload();
-        });
+        ArrayStoredParse[i].description = event.currentTarget.value.trim();
+        localStorage.setItem('tasks', JSON.stringify(ArrayStoredParse));
+        window.location.reload();
       }
     });
   });
