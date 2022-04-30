@@ -75,7 +75,7 @@ addTask.addEventListener('click', (addItem) => {
     editTaskItem = null;
   } else {
     saveTask({
-      index: (storedTasks.length + 1), description: addTaskInput.value, completed: false
+      index: (storedTasks.length + 1), description: addTaskInput.value, completed: false,
     });
   }
   addTaskInput.value = '';
@@ -87,15 +87,6 @@ document.addEventListener('keydown', (press) => {
     addTask.click();
   }
 });
-
-
-
-
-
-
-
-
-
 
 getTask();
 updateId();
