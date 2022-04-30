@@ -11,10 +11,9 @@ export default function UpdateLabel() {
           const listUpdate = document.getElementById(`updt${i}`);
           ArrayStoredParse[i].description = listUpdate.value;
           localStorage.setItem('tasks', JSON.stringify(ArrayStoredParse));
-          console.log(ArrayStoredParse[i], index);
           location.reload();
         });
       }
     });
   });
-};
+}

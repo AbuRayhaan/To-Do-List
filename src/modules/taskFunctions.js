@@ -7,7 +7,6 @@ const SteerChecked = () => {
     if (a.completed === true) {
       checkBoxs[i].checked = true;
       document.getElementById(`ptask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
-      console.log('checkBox', i);
     }
   });
 };
@@ -29,7 +28,6 @@ const removeChecked = () => {
         document.getElementById(`ptask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
         localStorage.setItem('tasks', JSON.stringify(TasksR));
       }
-      console.log(TasksR);
     });
 
     buttonRemove.addEventListener('click', () => {
