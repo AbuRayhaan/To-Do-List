@@ -1,11 +1,4 @@
 import './style.css';
-import showTrash from './modules/toggle.js';
-import {
-  SteerChecked, removeChecked,
-} from './modules/taskFunctions.js';
-import UpdateLabel from './modules/updateList.js';
-import removeTask from './modules/removeTask.js';
-import updateId from './modules/updateId.js';
 
 const toDoList = document.querySelector('#task-container');
 const addTask = document.getElementById('addTask');
@@ -13,6 +6,32 @@ const addTaskInput = document.getElementById('addTaskInput');
 
 let storedTasks = [];
 let editTaskItem = null;
+
+function showTrash() {
+  const ellipse = document.querySelectorAll('li');
+  ellipse.forEach((a, i) => {
+    a.addEventListener('mouseover', () => {
+      document.getElementById(`delete${i}`).style.display = 'flex';
+      document.getElementById(`ellipse${i}`).style.display = 'none';
+      document.getElementById(`pTask${i}`).style.display = 'flex';
+      document.getElementById(`updt${i}`).style.display = 'flex';
+      document.getElementById(`updt${i}`).addEventListener('click', () => {
+        document.getElementById(`pTask${i}`).style.display = 'none';
+        document.getElementById(`updt${i}`).style.display = 'flex';
+      });
+      a.style.backgroundColor = 'rgba(190, 180, 176, 0.61)';
+      document.getElementById(`updt${i}`).style.backgroundColor = 'transparent';
+    });
+
+    a.addEventListener('mouseout', () => {
+      document.getElementById(`delete${i}`).style.display = 'none';
+      document.getElementById(`ellipse${i}`).style.display = 'flex';
+      document.getElementById(`pTask${i}`).style.display = 'flex';
+      document.getElementById(`updt${i}`).style.display = 'none';
+      a.style.backgroundColor = 'transparent';
+    });
+  });
+}
 
 const getTask = () => {
   if (localStorage.getItem('tasks') === null) {
@@ -86,11 +105,81 @@ document.addEventListener('keydown', (press) => {
   }
 });
 
-const reload = document.getElementById('reload');
+const SteerChecked = () => {
+  const StoreCheck = JSON.parse(localStorage.getItem('tasks'));
+  const checkBoxs = document.querySelectorAll('.check');
+  StoreCheck.forEach((a, i) => {
+    if (a.completed === true) {
+      checkBoxs[i].checked = true;
+      document.getElementById(`ptask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
+    }
+  });
+};
 
-reload.addEventListener('click', () => {
-  removeTask();
-});
+const removeChecked = () => {
+  const buttonRemove = document.getElementById('button-clear');
+  const checkBoxs = document.querySelectorAll('.check');
+  const TasksR = JSON.parse(localStorage.getItem('tasks'));
+  checkBoxs.forEach((check, i) => {
+    check.addEventListener('click', () => {
+      if (TasksR[i].completed === true) {
+        TasksR[i].completed = false;
+        checkBoxs[i].checked = false;
+        document.getElementById(`pTask${i}`).style.textDecoration = 'none';
+        localStorage.setItem('tasks', JSON.stringify(TasksR));
+      } else {
+        TasksR[i].completed = true;
+        checkBoxs[i].checked = true;
+        document.getElementById(`ptask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
+        localStorage.setItem('tasks', JSON.stringify(TasksR));
+      }
+    });
+
+    buttonRemove.addEventListener('click', () => {
+      const TaskFiltered = TasksR.filter((task) => task.completed !== true);
+      localStorage.setItem('tasks', JSON.stringify(TaskFiltered));
+      window.location.reload();
+    });
+  });
+};
+
+function updateId() {
+  const TasksR = JSON.parse(localStorage.getItem('tasks'));
+  TasksR.forEach((a, i) => {
+    a.index = i;
+    localStorage.setItem('tasks', JSON.stringify(TasksR));
+  });
+}
+
+function removeTask() {
+  const removeList = document.querySelectorAll('.hide1');
+  const Taskstored = JSON.parse(localStorage.getItem('tasks'));
+  removeList.forEach((a, i) => {
+    document.getElementById(`idBtn${i}`).addEventListener('click', () => {
+      const TaskFiltered = Taskstored.filter((task) => task.index !== i);
+      localStorage.setItem('tasks', JSON.stringify(TaskFiltered));
+      window.location.reload();
+      updateId();
+    });
+  });
+}
+
+function UpdateLabel() {
+  const ArrayStored = localStorage.getItem('tasks');
+  const ArrayStoredParse = JSON.parse(ArrayStored);
+  const inputs = document.querySelectorAll('.UpdateLabel');
+
+  inputs.forEach((element, i) => {
+    element.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        ArrayStoredParse[i].description = event.currentTarget.value.trim();
+        localStorage.setItem('tasks', JSON.stringify(ArrayStoredParse));
+        window.location.reload();
+      }
+    });
+  });
+}
 
 getTask();
 updateId();
