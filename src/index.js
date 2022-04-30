@@ -169,7 +169,7 @@ function UpdateLabel() {
   const ArrayStoredParse = JSON.parse(ArrayStored);
   const inputs = document.querySelectorAll('.UpdateLabel');
 
-  inputs.forEach((element) => {
+  inputs.forEach((element, i) => {
     element.addEventListener('keypress', (event) => {
       if (event.key === 'Enter') {
         event.preventDefault();
