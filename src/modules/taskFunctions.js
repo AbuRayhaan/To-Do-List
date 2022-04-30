@@ -4,7 +4,7 @@ const SteerChecked = () => {
   StoreCheck.forEach((a, i) => {
     if (a.completed === true) {
       checkBoxs[i].checked = true;
-      document.getElementById(`ptask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
+      document.getElementById(`pTask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
     }
   });
 };
@@ -23,7 +23,7 @@ const removeChecked = () => {
       } else {
         TasksR[i].completed = true;
         checkBoxs[i].checked = true;
-        document.getElementById(`ptask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
+        document.getElementById(`pTask${i}`).style.textDecoration = 'line-through rgb(68, 68, 68)';
         localStorage.setItem('tasks', JSON.stringify(TasksR));
       }
     });
