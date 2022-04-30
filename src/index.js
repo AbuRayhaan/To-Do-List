@@ -92,7 +92,9 @@ addTask.addEventListener('click', (addItem) => {
     saveEditTask(editTaskItem);
     editTaskItem = null;
   } else {
-    saveTask({index: (storedTasks.length + 1), description: addTaskInput.value, completed: false});
+    saveTask({ 
+      index: (storedTasks.length + 1), description: addTaskInput.value, completed: false,
+    });
   }
   addTaskInput.value = '';
   window.location.reload();
