@@ -1,12 +1,20 @@
 import './style.css';
-
+/* 
+import showTrash from './modules/toggle.js';
+import {
+  SteerChecked, removeChecked,
+} from './modules/taskFunctions.js';
+import UpdateLabel from './modules/updateList.js';
+import removeTask from './modules/removeTask.js';
+import updateId from './modules/updateId.js';
+*/
 const toDoList = document.querySelector('#task-container');
 const addTask = document.getElementById('addTask');
 const addTaskInput = document.getElementById('addTaskInput');
 
 let storedTasks = [];
 let editTaskItem = null;
-
+/*
 function showTrash() {
   const ellipse = document.querySelectorAll('li');
   ellipse.forEach((a, i) => {
@@ -32,7 +40,7 @@ function showTrash() {
     });
   });
 }
-
+*/
 const getTask = () => {
   if (localStorage.getItem('tasks') === null) {
     storedTasks = [];
@@ -50,7 +58,7 @@ const getTask = () => {
     <input type="checkbox" id="${index} ${task.completed ? 'checked' : ''}" class="check">
     <label type="text" class="Label" id="pTask${index}">${task.description}</label>
     <input type="text" class="UpdateLabel" id="updt${index}"/>
-    </div>  
+    </div>
     <div class="hide2" id="ellipse${index}">
     <i class="fa-solid fa-ellipsis-vertical" ></i>
     </div>
@@ -62,7 +70,7 @@ const getTask = () => {
   });
   toDoList.innerHTML = display;
 
-  showTrash();
+  // showTrash();
 };
 
 const saveTask = ({ index, description, completed = false }) => {
@@ -92,7 +100,9 @@ addTask.addEventListener('click', (addItem) => {
     saveEditTask(editTaskItem);
     editTaskItem = null;
   } else {
-    saveTask({ index: storedTasks.length, description: addTaskInput.value, completed: false });
+    saveTask({
+      index: (storedTasks.length - 1), description: addTaskInput.value, completed: false,
+    });
   }
   addTaskInput.value = '';
   window.location.reload();
@@ -103,7 +113,7 @@ document.addEventListener('keydown', (press) => {
     addTask.click();
   }
 });
-
+/*
 const SteerChecked = () => {
   const StoreCheck = JSON.parse(localStorage.getItem('tasks'));
   const checkBoxs = document.querySelectorAll('.check');
@@ -186,3 +196,4 @@ removeTask();
 SteerChecked();
 removeChecked();
 UpdateLabel();
+*/
