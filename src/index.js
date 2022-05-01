@@ -1,13 +1,12 @@
 import './style.css';
-/* 
+import updateId from './modules/updateId.js';
+import UpdateLabel from './modules/updateList.js';
 import showTrash from './modules/toggle.js';
 import {
   SteerChecked, removeChecked,
 } from './modules/taskFunctions.js';
-import UpdateLabel from './modules/updateList.js';
 import removeTask from './modules/removeTask.js';
-import updateId from './modules/updateId.js';
-*/
+
 const toDoList = document.querySelector('#task-container');
 const addTask = document.getElementById('addTask');
 const addTaskInput = document.getElementById('addTaskInput');
@@ -70,7 +69,7 @@ const getTask = () => {
   });
   toDoList.innerHTML = display;
 
-  // showTrash();
+  showTrash();
 };
 
 const saveTask = ({ index, description, completed = false }) => {
@@ -151,7 +150,8 @@ const removeChecked = () => {
     });
   });
 };
-
+*/
+/*
 function updateId() {
   const TasksR = JSON.parse(localStorage.getItem('tasks'));
   TasksR.forEach((a, i) => {
@@ -159,7 +159,8 @@ function updateId() {
     localStorage.setItem('tasks', JSON.stringify(TasksR));
   });
 }
-
+*/
+/*
 function removeTask() {
   const removeList = document.querySelectorAll('.hide1');
   const Taskstored = JSON.parse(localStorage.getItem('tasks'));
@@ -172,7 +173,8 @@ function removeTask() {
     });
   });
 }
-
+*/
+/*
 function UpdateLabel() {
   const ArrayStored = localStorage.getItem('tasks');
   const ArrayStoredParse = JSON.parse(ArrayStored);
@@ -189,11 +191,10 @@ function UpdateLabel() {
     });
   });
 }
-
+*/
 getTask();
 updateId();
 removeTask();
 SteerChecked();
 removeChecked();
 UpdateLabel();
-*/
