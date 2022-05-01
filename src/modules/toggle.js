@@ -21,5 +21,5 @@ export default function showTrash() {
       document.getElementById(`updt${i}`).style.display = 'none';
       a.style.backgroundColor = 'transparent';
     });
-});
+  });
 }

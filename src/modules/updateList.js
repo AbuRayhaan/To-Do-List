@@ -12,5 +12,5 @@ export default function UpdateLabel() {
         window.location.reload();
       }
     });
-});
+  });
 }

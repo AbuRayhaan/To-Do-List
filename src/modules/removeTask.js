@@ -1,3 +1,5 @@
+import updateId from './updateId.js';
+
 export default function removeTask() {
   const removeList = document.querySelectorAll('.hide1');
   const Taskstored = JSON.parse(localStorage.getItem('tasks'));
