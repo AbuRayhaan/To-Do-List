@@ -2,10 +2,10 @@ import './style.css';
 import updateId from './modules/updateId.js';
 import UpdateLabel from './modules/updateList.js';
 import showTrash from './modules/toggle.js';
+import removeTask from './modules/removeTask.js';
 import {
   SteerChecked, removeChecked,
 } from './modules/taskFunctions.js';
-import removeTask from './modules/removeTask.js';
 
 const toDoList = document.querySelector('#task-container');
 const addTask = document.getElementById('addTask');
@@ -74,7 +74,7 @@ addTask.addEventListener('click', (addItem) => {
     editTaskItem = null;
   } else {
     saveTask({
-      index: (storedTasks.length - 1), description: addTaskInput.value, completed: false,
+      index: (storedTasks.length + 1), description: addTaskInput.value, completed: false,
     });
   }
   addTaskInput.value = '';
