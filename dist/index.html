@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+<script defer src="main.js"></script></head>
+<body>
+    <section class="container">
+        <div class="header-section">
+            <h1 class="task-title">Today's To do </h1>
+            <i class="fa-solid fa-rotate reload" id="reload"></i>
+        </div>
+
+        <div class="add-section">
+            <input type="text" class="add-task" id="addTaskInput" placeholder="Add to your list...">
+            <button type="submit" class="add-button" id="addTask">
+                <i class="fa-solid fa-circle-down"></i>
+            </button>
+        </div>
+
+        <div class="task-section">
+            <ul id="task-container">
+                <!--Dynamically Generated-->
+            </ul>
+            <div class="button-container">
+                <button type="submit" class="button-clear" id="button-clear">Clear all completed</button>
+            </div>
+        </div>
+
+    </section>
+    <script src="https://kit.fontawesome.com/a7a68c4557.js" crossorigin="anonymous"></script>
+</body>
+</html>
