@@ -1,5 +1,7 @@
 # To-Do-List
 
+![screenshot](images/ss.png)
+
 This is my To-Do List project in the Microverse curriculum.
 
 ## Built With
