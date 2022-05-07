@@ -1,6 +1,6 @@
 # To-Do-List
 
-![screenshot](images/screenshot.png)
+![screenshot](images/screenshots.png)
 
 This is my To-Do List project in the Microverse curriculum.
 
