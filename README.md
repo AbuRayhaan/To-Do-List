@@ -13,7 +13,7 @@ This is my To-Do List project in the Microverse curriculum.
 
 ## Live Demo
 
-[Live Demo Link](https://aburayhaan.github.io/To-Do-List/)
+[Live Demo Link](https://aburayhaan.github.io/To-Do-List)
 
 ## Getting Started
 
